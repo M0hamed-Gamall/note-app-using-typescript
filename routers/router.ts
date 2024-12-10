@@ -1,5 +1,7 @@
 import {Router} from 'express';
-import path from 'path'
+import path from 'path';
+
+
 const router = Router();
 
 router.get('/' , (req,res,next)=>{
@@ -10,8 +12,12 @@ router.get('/notes' , (req,res,next)=>{
 
 })
 
-router.post('/',(req,res,next)=>{
-    res.send("post request was sended")
+router.post('/',async(req,res,next)=>{
+
+})
+
+router.use((req,res,next)=>{
+    res.status(404).send('Page Note Found')
 })
 
 export default router; 

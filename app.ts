@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv'
 import logger from 'morgan' 
+import router from './routers/router';
 
 dotenv.config();
 const app= express();
@@ -11,9 +12,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 
-app.get('/' , (req,res,next)=>{
-    res.status(200).send("test")
-})
+app.use(router);
 
 app.listen(process.env.PORT , ()=>{
     console.log("server running on port ",process.env.PORT)

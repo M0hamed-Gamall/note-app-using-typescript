@@ -9,8 +9,15 @@ router.get('/' , (req,res,next)=>{
     res.status(200).sendFile(path.resolve('public', 'home.html'));
 })
 
-router.get('/notes' , (req,res,next)=>{
-    
+router.get('/notes' ,async (req,res,next)=>{
+    try{
+        const notes = await NoteModel.find();
+        res.render('index' , {notes : notes})
+    }catch(err){
+        console.error("can't fitch notes : " ,err );
+        res.status(500).send("Internal Server Error");
+    }
+
 })
 
 router.post('/',async(req,res,next)=>{

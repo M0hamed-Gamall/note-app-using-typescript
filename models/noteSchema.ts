@@ -5,7 +5,7 @@ interface NoteDocument extends Document {
 }
 
 const NoteSchema: Schema = new Schema({
-    content: { type: String, required: true }, 
+    content: { type: String }, 
 });
 
 
